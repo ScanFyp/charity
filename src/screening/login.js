@@ -1,7 +1,13 @@
 import { Text, StyleSheet, View ,TextInput} from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
+import Checkbox from 'expo-checkbox';
+import { TouchableOpacity } from 'react-native-web';
 
-const Login = () => {
+const Login = ({navigation}) => {
+  const Submit = () => {
+    navigation.navigate("color");
+  }
+  const[Agree,setAgree]= useState(false);
     return (
       <View>
         <Text>LOGIN FORM</Text>
@@ -9,6 +15,16 @@ const Login = () => {
         <View>
             <Text>Enter Your Name</Text>
             <TextInput />
+        </View>
+        <View>
+          <Checkbox 
+          value={Agree}
+          onValueChange={()=> setAgree(!Agree)}
+          color={Agree ? "#4630EB" : undefined}
+          />
+          <TouchableOpacity onPress={() => Submit()}>
+          <Text> LOGIN </Text>
+         </TouchableOpacity>
         </View>
       </View>
     );

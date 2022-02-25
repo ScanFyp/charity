@@ -8,18 +8,18 @@ import CounterNumber from "./src/screening/CounterNumber";
 import ColorGenerator from "./src/screening/ColorGenerator";
 import HookEffect from "./src/screening/HookEffect";
 import Login from "./src/screening/login";
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
 const App = () => {
+    const Stack = createNativeStackNavigator();
 return(
-<View>
-    <FirstChallenge />
-    <FlatListDemo />
-    <ImagesFile />
-   <OurButton /> 
-   <CounterNumber />
-   <ColorGenerator />
-   <HookEffect/>
-   < Login/>
-</View>
+<NavigationContainer>
+    <Stack.Navigator initialRouteName="loginpage"> 
+<Stack.Screen name="loginpage" component={Login} />
+<Stack.Screen name="color" component={ColorGenerator}/>  
+</Stack.Navigator>
+</NavigationContainer>
 );
 }
 
